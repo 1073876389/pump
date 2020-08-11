@@ -8,9 +8,11 @@ spring:
     static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/templates/
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://db:3307/pump?serverTimezone=UTC&useUnicode=true&haracterEncoding=utf8&useSSL=true
+    url: jdbc:mysql://localhost:3306/pump?serverTimezone=UTC&useUnicode=true&haracterEncoding=utf8&useSSL=true
+#    url: jdbc:mysql://db:3307/pump?serverTimezone=UTC&useUnicode=true&haracterEncoding=utf8&useSSL=true
     username: root
-    password: root
+    password: admin
+#    password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
     druid:
       #最大活跃数
@@ -47,17 +49,31 @@ spring:
 #      prefix: WEB-INF/jsp
 #      suffix: .jsp
 
+#=======================================rabbitmq配置=======================================
+  rabbitmq:
+    host: localhost #连接地址
+    port: 5672 #连接端口
+    virtual-host: /pump #连接 虚拟地址
+    username: pump # 用户名
+    password: pump # 密码 pu
+    publisher-confirm-type: correlated # 确认函数回调
 #=======================================redis配置=======================================
-#  redis:
-#    host: localhost
-#    port: 6379
-#    database: 1
-#    timeout: 5000
-#    pool:
-#      max-active: 8
-#      max-idle: 500
-#      min-idle: 0
-#      max-wait: -1
+  redis:
+    host: localhost
+    port: 6379
+    database: 1
+    timeout: 5000ms
+    pool:
+      max-active: 8
+      max-idle: 500
+      min-idle: 0
+      max-wait: -1
+redis:
+  key:
+    prefix:
+      authCode: "portal:authCode:"
+    expire:
+      authCode: 120 #验证码超期时间 s 秒
 
 #=======================================mybatis配置=======================================
 mybatis:
