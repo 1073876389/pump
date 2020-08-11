@@ -1,9 +1,7 @@
-package com.xuwx.pump.api;/**
- * Created by xuwx on 2020/7/6.
- */
+package com.xuwx.pump.api;
 
 /**
- *@ClassNameCommonResult
+ *@ClassName CommonResult
  *@Description TODO
  *@Author wx.Xu
  *Date 2020/7/6 16:54
